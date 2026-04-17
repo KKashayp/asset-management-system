@@ -50,16 +50,39 @@ function LoginPage({ onLogin }) {
 
   return (
     <div className="login-page enhanced-login-page">
-      <div className="login-layout">
-        <div className="login-hero-panel">
-          <div className="hero-badge">Enterprise Ready Platform</div>
+      <div className="animated-bg">
+        <span className="bg-orb orb-1"></span>
+        <span className="bg-orb orb-2"></span>
+        <span className="bg-orb orb-3"></span>
+        <span className="bg-grid"></span>
+      </div>
 
-          <h1 className="hero-title">Asset Management System</h1>
+      <div className="login-layout">
+        <div className="login-hero-panel saas-panel">
+          <div className="hero-badge">Enterprise SaaS Platform</div>
+
+          <h1 className="hero-title">
+            Smart Asset
+            <br />
+            Management for
+            <span className="hero-gradient-text"> Modern Teams</span>
+          </h1>
 
           <p className="hero-subtitle">
-            A centralized platform to manage organizational assets, control user
-            access, track allocations, and improve operational visibility.
+            Streamline asset tracking, role-based access, allocation workflows,
+            and operational control from one centralized cloud platform.
           </p>
+
+          <div className="hero-cta-row">
+            <div className="hero-cta-box">
+              <strong>Secure Access</strong>
+              <span>JWT authentication with protected APIs</span>
+            </div>
+            <div className="hero-cta-box">
+              <strong>Live Operations</strong>
+              <span>Manage assets, users, and allocations instantly</span>
+            </div>
+          </div>
 
           <div className="hero-section">
             <h3>What this app does</h3>
@@ -68,16 +91,21 @@ function LoginPage({ onLogin }) {
               employees, monitor availability, and maintain secure role-based
               workflows for administrators, managers, and employees.
             </p>
+          </div>
 
-            <div className="hero-section">
-  <h3>About Developer</h3>
-  <p>
-    This project is developed by Kritarth Kashyap as a full-stack enterprise
-    application demonstrating secure authentication, role-based access, and
-    cloud deployment.
-  </p>
-  <p>Email: kritarthkashyap123@gmail.com</p>
-</div>
+          <div className="hero-section">
+            <h3>About Developer</h3>
+            <p>
+              This project is developed by Kritarth Kashyap as a full-stack
+              enterprise application demonstrating secure authentication,
+              role-based access, and cloud deployment.
+            </p>
+            <p>
+              Email:{" "}
+              <a href="mailto:kritarthkashyap123@gmail.com">
+                kritarthkashyap123@gmail.com
+              </a>
+            </p>
           </div>
 
           <div className="hero-feature-grid">
@@ -93,37 +121,32 @@ function LoginPage({ onLogin }) {
 
             <div className="hero-feature-card">
               <h4>Secure Login</h4>
-              <p>JWT-based authentication for protected API access.</p>
+              <p>Protected authentication and token-based user sessions.</p>
             </div>
 
             <div className="hero-feature-card">
-              <h4>Allocation Workflow</h4>
-              <p>Assign, return, and review asset usage in one platform.</p>
+              <h4>Allocation Control</h4>
+              <p>Assign, return, and review assets with centralized visibility.</p>
             </div>
           </div>
 
           <div className="hero-stats-row">
             <div className="hero-stat-box">
-              <span>Secure</span>
-              <strong>JWT Auth</strong>
+              <span>Security</span>
+              <strong>JWT Enabled</strong>
+            </div>
+            <div className="hero-stat-box">
+              <span>Access Model</span>
+              <strong>RBAC Ready</strong>
             </div>
             <div className="hero-stat-box">
               <span>Deployment</span>
               <strong>Cloud Hosted</strong>
             </div>
-            <div className="hero-stat-box">
-              <span>Access</span>
-              <strong>RBAC Enabled</strong>
-            </div>
-          </div>
-
-          <div className="hero-footer-note">
-            Designed for modern organizations that need smarter digital control
-            over assets and resource allocation.
           </div>
         </div>
 
-        <div className="login-card auth-card-wide">
+        <div className="login-card auth-card-wide saas-login-card">
           <p className="auth-mini-title">Welcome Back</p>
           <h1>Asset Management System</h1>
           <p className="auth-description">
