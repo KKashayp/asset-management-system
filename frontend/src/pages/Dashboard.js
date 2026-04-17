@@ -22,7 +22,8 @@ import {
   allocateAsset,
   retireAsset,
   returnAsset,
-  updateAsset
+  updateAsset,
+  resetSystem
 } from "../services/api";
 
 function Dashboard({ onLogout }) {
@@ -141,6 +142,28 @@ function Dashboard({ onLogout }) {
     }
   };
 
+  const handleResetSystem = async () => {
+    const confirmText = window.prompt(
+      "This will delete all users except admin, all assets, and all allocations.\n\nType RESET to continue."
+    );
+
+    if (confirmText !== "RESET") {
+      return;
+    }
+
+    try {
+      await resetSystem();
+      alert("System reset successful.");
+      loadAllData();
+    } catch (error) {
+      alert(
+        error?.response?.data?.message ||
+          error?.response?.data ||
+          "Failed to reset system"
+      );
+    }
+  };
+
   const availableAssets = assets.filter(
     (asset) => (asset.status || "").toUpperCase() === "AVAILABLE"
   ).length;
@@ -170,6 +193,14 @@ function Dashboard({ onLogout }) {
                 manage day-to-day operations efficiently and securely.
               </p>
             </div>
+
+            {isAdmin && (
+              <div className="admin-action-bar">
+                <button className="danger-btn" onClick={handleResetSystem}>
+                  Reset System
+                </button>
+              </div>
+            )}
 
             <div className="stats-grid">
               <StatCard title="Total Assets" value={assets.length} />

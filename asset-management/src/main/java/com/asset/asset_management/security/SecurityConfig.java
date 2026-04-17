@@ -33,6 +33,8 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
 
+                        .requestMatchers("/api/system/**").hasRole("ADMIN")
+
                         .requestMatchers(HttpMethod.GET, "/api/allocations/my")
                         .hasAnyRole("EMPLOYEE", "ADMIN", "MANAGER")
 

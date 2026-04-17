@@ -30,5 +30,6 @@ export const getActiveAllocations = () => api.get("/allocations/active");
 export const getMyAllocations = () => api.get("/allocations/my");
 export const allocateAsset = (data) => api.post("/allocations", data);
 export const returnAsset = (id) => api.put(`/allocations/return/${id}`);
+export const resetSystem = () => api.delete("/system/reset");
 
 export default api;

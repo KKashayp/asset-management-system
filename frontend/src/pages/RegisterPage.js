@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { registerUser } from "../services/api";
+import { registerUser, loginUser } from "../services/api";
 
-function RegisterPage() {
+function RegisterPage({ onLogin, onShowLogin }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -42,12 +42,17 @@ function RegisterPage() {
 
     try {
       await registerUser(formData);
-      alert("Registration successful. Your role is EMPLOYEE.");
-      setFormData({
-        name: "",
-        email: "",
-        password: ""
+
+      const loginResponse = await loginUser({
+        email: formData.email,
+        password: formData.password
       });
+
+      localStorage.setItem("token", loginResponse.data.token);
+      localStorage.setItem("role", loginResponse.data.role);
+      localStorage.setItem("email", loginResponse.data.email);
+
+      onLogin(loginResponse.data.token);
     } catch (error) {
       alert(getErrorMessage(error));
     }
@@ -176,6 +181,13 @@ function RegisterPage() {
 
             <button type="submit">Register</button>
           </form>
+
+          <div className="auth-switch-link">
+            <span>Already have an account? </span>
+            <button type="button" onClick={onShowLogin}>
+              Login here
+            </button>
+          </div>
 
           <div className="auth-note-box">
             <h4>Access model</h4>

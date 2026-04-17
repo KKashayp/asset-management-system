@@ -2,9 +2,6 @@ import React, { useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Dashboard from "./pages/Dashboard";
-import Footer from "./components/Footer";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 
 function App() {
@@ -14,6 +11,7 @@ function App() {
   const handleLogin = (jwtToken) => {
     localStorage.setItem("token", jwtToken);
     setToken(jwtToken);
+    setShowRegister(false);
   };
 
   const handleLogout = () => {
@@ -28,50 +26,20 @@ function App() {
     <>
       {!token ? (
         showRegister ? (
-          <>
-            <RegisterPage />
-            <p className="auth-switch">
-              Already have account?{" "}
-              <button type="button" onClick={() => setShowRegister(false)}>
-                Login
-              </button>
-            </p>
-          </>
+          <RegisterPage
+            onLogin={handleLogin}
+            onShowLogin={() => setShowRegister(false)}
+          />
         ) : (
-          <>
-            <LoginPage onLogin={handleLogin} />
-            <p className="auth-switch">
-              New user?{" "}
-              <button type="button" onClick={() => setShowRegister(true)}>
-                Register
-              </button>
-            </p>
-          </>
+          <LoginPage
+            onLogin={handleLogin}
+            onShowRegister={() => setShowRegister(true)}
+          />
         )
       ) : (
         <Dashboard onLogout={handleLogout} />
       )}
-
-      <ToastContainer
-        position="top-right"
-        autoClose={2200}
-        hideProgressBar
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-        theme="dark"
-      />
-
-      <>
-  {/* your existing routes/components */}
-
-  <Footer />
-</>
     </>
-    
-
-
-
   );
 }
 

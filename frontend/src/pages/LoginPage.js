@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { loginUser } from "../services/api";
 
-function LoginPage({ onLogin }) {
+function LoginPage({ onLogin, onShowRegister }) {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -175,6 +175,13 @@ function LoginPage({ onLogin }) {
 
             <button type="submit">Login</button>
           </form>
+
+          <div className="auth-switch-link">
+            <span>New user? </span>
+            <button type="button" onClick={onShowRegister}>
+              Register here
+            </button>
+          </div>
 
           <div className="auth-note-box">
             <h4>Why use this platform?</h4>
