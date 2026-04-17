@@ -20,15 +20,18 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
     private final AuthenticationManager authenticationManager;
+    private final EmailService emailService;
 
     public AuthService(UserRepository userRepository,
                        PasswordEncoder passwordEncoder,
                        JwtUtil jwtUtil,
-                       AuthenticationManager authenticationManager) {
+                       AuthenticationManager authenticationManager,
+                       EmailService emailService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtUtil = jwtUtil;
         this.authenticationManager = authenticationManager;
+        this.emailService = emailService;
     }
 
     public AuthResponseDTO register(RegisterRequestDTO requestDTO) {
@@ -43,6 +46,8 @@ public class AuthService {
         user.setRole(RoleType.EMPLOYEE);
 
         User savedUser = userRepository.save(user);
+
+        emailService.sendRegistrationEmail(savedUser.getEmail(), savedUser.getName());
 
         String token = jwtUtil.generateToken(
                 savedUser.getEmail(),
