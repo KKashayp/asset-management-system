@@ -1048,3 +1048,218 @@ table tbody tr:hover td {
   line-height: 1.7;
   font-size: 14px;
 }
+
+.enhanced-login-page {
+  min-height: 100vh;
+  padding: 30px;
+  background:
+    radial-gradient(circle at top left, rgba(0, 180, 216, 0.10), transparent 18%),
+    radial-gradient(circle at bottom right, rgba(158, 240, 26, 0.06), transparent 18%),
+    linear-gradient(135deg, #11161b, #1b2229 50%, #10151a);
+}
+
+.login-layout {
+  min-height: calc(100vh - 60px);
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 32px;
+  align-items: center;
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+.login-hero-panel {
+  padding: 42px;
+  border-radius: 30px;
+  background:
+    linear-gradient(160deg, rgba(52, 58, 64, 0.96), rgba(27, 33, 39, 0.96));
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 22px 46px rgba(0, 0, 0, 0.34);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-hero-panel::before {
+  content: "";
+  position: absolute;
+  top: -70px;
+  right: -70px;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 180, 216, 0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.login-hero-panel::after {
+  content: "";
+  position: absolute;
+  bottom: -90px;
+  left: -70px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(158, 240, 26, 0.07), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 180, 216, 0.12);
+  color: var(--accent-blue);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  margin: 0 0 16px;
+  font-size: 52px;
+  line-height: 1.1;
+  color: #f3f7fa;
+  font-weight: 800;
+}
+
+.hero-subtitle {
+  margin: 0 0 28px;
+  max-width: 760px;
+  color: #c4d0d8;
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.hero-section {
+  margin-bottom: 26px;
+  padding: 18px 20px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.hero-section h3 {
+  margin: 0 0 10px;
+  color: var(--accent-blue);
+  font-size: 22px;
+}
+
+.hero-section p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+.hero-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.hero-feature-card {
+  padding: 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.hero-feature-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 180, 216, 0.20);
+}
+
+.hero-feature-card h4 {
+  margin: 0 0 10px;
+  color: #f1f5f9;
+  font-size: 17px;
+}
+
+.hero-feature-card p {
+  margin: 0;
+  color: var(--text-soft);
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.hero-stats-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+
+.hero-stat-box {
+  min-width: 160px;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: rgba(0, 180, 216, 0.08);
+  border: 1px solid rgba(0, 180, 216, 0.14);
+}
+
+.hero-stat-box span {
+  display: block;
+  color: #9ab6c2;
+  font-size: 12px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.hero-stat-box strong {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.hero-footer-note {
+  color: #93a4af;
+  font-size: 14px;
+  line-height: 1.6;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 18px;
+}
+
+@media (max-width: 1100px) {
+  .login-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .login-hero-panel {
+    order: 2;
+  }
+
+  .login-card {
+    order: 1;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .enhanced-login-page {
+    padding: 16px;
+  }
+
+  .login-hero-panel {
+    padding: 24px;
+  }
+
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-subtitle {
+    font-size: 15px;
+  }
+}
