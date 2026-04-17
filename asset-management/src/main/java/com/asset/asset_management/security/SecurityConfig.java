@@ -33,15 +33,22 @@ public class SecurityConfig {
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/h2-console/**").permitAll()
 
-                        .requestMatchers(HttpMethod.GET, "/api/allocations/my").hasAnyRole("EMPLOYEE", "ADMIN", "MANAGER")
+                        .requestMatchers(HttpMethod.GET, "/api/allocations/my")
+                        .hasAnyRole("EMPLOYEE", "ADMIN", "MANAGER")
 
-                        .requestMatchers(HttpMethod.GET, "/api/users/**").hasAnyRole("ADMIN", "MANAGER")
-                        .requestMatchers(HttpMethod.POST, "/api/users/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/users/**")
+                        .hasAnyRole("ADMIN", "MANAGER")
 
-                        .requestMatchers("/api/assets/**").hasAnyRole("ADMIN", "MANAGER")
-                        .requestMatchers("/api/allocations/**").hasAnyRole("ADMIN", "MANAGER")
+                        .requestMatchers(HttpMethod.POST, "/api/users/**")
+                        .hasRole("ADMIN")
 
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/assets/**")
+                        .hasAnyRole("ADMIN", "MANAGER")
+
+                        .requestMatchers("/api/allocations/**")
+                        .hasAnyRole("ADMIN", "MANAGER")
+
+                        .anyRequest().permitAll()
                 )
                 .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
