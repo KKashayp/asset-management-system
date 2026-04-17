@@ -68,6 +68,16 @@ function LoginPage({ onLogin }) {
               employees, monitor availability, and maintain secure role-based
               workflows for administrators, managers, and employees.
             </p>
+
+            <div className="hero-section">
+  <h3>About Developer</h3>
+  <p>
+    This project is developed by Kritarth Kashyap as a full-stack enterprise
+    application demonstrating secure authentication, role-based access, and
+    cloud deployment.
+  </p>
+  <p>Email: kritarthkashyap123@gmail.com</p>
+</div>
           </div>
 
           <div className="hero-feature-grid">

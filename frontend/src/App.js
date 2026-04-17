@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import Dashboard from "./pages/Dashboard";
+import Footer from "./components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -60,7 +61,17 @@ function App() {
         pauseOnHover
         theme="dark"
       />
+
+      <>
+  {/* your existing routes/components */}
+
+  <Footer />
+</>
     </>
+    
+
+
+
   );
 }
 
