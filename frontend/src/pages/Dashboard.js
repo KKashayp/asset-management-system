@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import StatCard from "../components/StatCard";
@@ -62,8 +61,7 @@ function Dashboard({ onLogout }) {
       setAllocations(responses[1].data || []);
       setUsers(responses[2].data || []);
     } catch (error) {
-      console.error("Dashboard load error:", error);
-      toast.error(
+      alert(
         error?.response?.data?.message ||
           error?.response?.data ||
           error.message ||
@@ -81,50 +79,45 @@ function Dashboard({ onLogout }) {
   const handleAddAsset = async (assetData) => {
     try {
       await addAsset(assetData);
-      toast.success("Asset added");
       loadAllData();
     } catch (error) {
-      toast.error(error?.response?.data?.message || error?.response?.data || "Failed to add asset");
+      alert(error?.response?.data?.message || error?.response?.data || "Failed to add asset");
     }
   };
 
   const handleAddUser = async (userData) => {
     try {
       await addUser(userData);
-      toast.success("User created");
       loadAllData();
     } catch (error) {
-      toast.error(error?.response?.data?.message || error?.response?.data || "Failed to add user");
+      alert(error?.response?.data?.message || error?.response?.data || "Failed to add user");
     }
   };
 
   const handleAllocateAsset = async (allocationData) => {
     try {
       await allocateAsset(allocationData);
-      toast.success("Asset allocated");
       loadAllData();
     } catch (error) {
-      toast.error(error?.response?.data?.message || error?.response?.data || "Failed to allocate asset");
+      alert(error?.response?.data?.message || error?.response?.data || "Failed to allocate asset");
     }
   };
 
   const handleRetireAsset = async (id) => {
     try {
       await retireAsset(id);
-      toast.success("Asset retired");
       loadAllData();
     } catch (error) {
-      toast.error(error?.response?.data?.message || error?.response?.data || "Failed to retire asset");
+      alert(error?.response?.data?.message || error?.response?.data || "Failed to retire asset");
     }
   };
 
   const handleReturnAsset = async (id) => {
     try {
       await returnAsset(id);
-      toast.success("Asset returned");
       loadAllData();
     } catch (error) {
-      toast.error(error?.response?.data?.message || error?.response?.data || "Failed to return asset");
+      alert(error?.response?.data?.message || error?.response?.data || "Failed to return asset");
     }
   };
 
@@ -141,11 +134,10 @@ function Dashboard({ onLogout }) {
   const handleUpdateAsset = async (id, data) => {
     try {
       await updateAsset(id, data);
-      toast.success("Asset updated");
       handleCloseEdit();
       loadAllData();
     } catch (error) {
-      toast.error(error?.response?.data?.message || error?.response?.data || "Failed to update asset");
+      alert(error?.response?.data?.message || error?.response?.data || "Failed to update asset");
     }
   };
 
@@ -170,6 +162,15 @@ function Dashboard({ onLogout }) {
 
         {!isEmployee && activeTab === "Overview" && (
           <>
+            <div className="dashboard-intro-box">
+              <h2>Welcome to the Asset Management Control Center</h2>
+              <p>
+                This platform provides centralized visibility over asset inventory,
+                allocation records, and user access. Use the dashboard sections to
+                manage day-to-day operations efficiently and securely.
+              </p>
+            </div>
+
             <div className="stats-grid">
               <StatCard title="Total Assets" value={assets.length} />
               <StatCard title="Available Assets" value={availableAssets} />
@@ -192,6 +193,14 @@ function Dashboard({ onLogout }) {
 
         {!isEmployee && activeTab === "Assets" && (
           <>
+            <div className="dashboard-intro-box">
+              <h2>Asset Inventory Management</h2>
+              <p>
+                Register new organizational assets, review their status, and keep
+                inventory records updated for smooth operational planning.
+              </p>
+            </div>
+
             <div className="forms-grid">
               <AssetForm onAddAsset={handleAddAsset} />
             </div>
@@ -213,6 +222,14 @@ function Dashboard({ onLogout }) {
 
         {!isEmployee && activeTab === "Allocations" && (
           <>
+            <div className="dashboard-intro-box">
+              <h2>Allocation Management</h2>
+              <p>
+                Assign assets to users, monitor allocation history, and manage
+                asset returns through a role-based workflow.
+              </p>
+            </div>
+
             <div className="forms-grid">
               <AllocationForm
                 users={users}
@@ -237,6 +254,14 @@ function Dashboard({ onLogout }) {
 
         {!isEmployee && activeTab === "Users" && (
           <>
+            <div className="dashboard-intro-box">
+              <h2>User Access Management</h2>
+              <p>
+                Create user accounts, define access levels, and maintain secure
+                role-based permissions for the organization.
+              </p>
+            </div>
+
             <RolePanel role={role} />
 
             {isAdmin && (
@@ -257,7 +282,16 @@ function Dashboard({ onLogout }) {
 
         {isEmployee && activeTab === "My Assets" && (
           <>
+            <div className="dashboard-intro-box">
+              <h2>My Asset Records</h2>
+              <p>
+                Review your assigned assets, allocation dates, and current asset
+                usage details in one place.
+              </p>
+            </div>
+
             <RolePanel role={role} />
+
             <div className="info-box">
               You can view only your assigned assets and allocation history.
             </div>

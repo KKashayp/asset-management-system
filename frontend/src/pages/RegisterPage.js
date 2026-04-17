@@ -49,21 +49,24 @@ function RegisterPage() {
         password: ""
       });
     } catch (error) {
-      console.log("Register error:", error);
-      console.log("Backend response:", error?.response?.data);
       alert(getErrorMessage(error));
     }
   };
 
   return (
     <div className="login-page">
-      <div className="login-card">
-        <h1>Register</h1>
+      <div className="login-card auth-card-wide">
+        <p className="auth-mini-title">Create Account</p>
+        <h1>Join Asset Management System</h1>
+        <p className="auth-description">
+          Register to access your employee portal and view assigned asset records
+          securely from anywhere.
+        </p>
 
         <form onSubmit={handleSubmit}>
           <input
             name="name"
-            placeholder="Name"
+            placeholder="Enter your full name"
             value={formData.name}
             onChange={handleChange}
             required
@@ -72,7 +75,7 @@ function RegisterPage() {
           <input
             name="email"
             type="email"
-            placeholder="Email"
+            placeholder="Enter your email"
             value={formData.email}
             onChange={handleChange}
             required
@@ -81,7 +84,7 @@ function RegisterPage() {
           <input
             name="password"
             type="password"
-            placeholder="Password"
+            placeholder="Create your password"
             value={formData.password}
             onChange={handleChange}
             required
@@ -89,6 +92,14 @@ function RegisterPage() {
 
           <button type="submit">Register</button>
         </form>
+
+        <div className="auth-note-box">
+          <h4>Access model</h4>
+          <p>
+            Public registration creates an employee account. Higher-level access
+            such as manager and admin is controlled internally by the system.
+          </p>
+        </div>
       </div>
     </div>
   );
