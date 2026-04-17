@@ -1704,3 +1704,80 @@ table tbody tr:hover td {
 .auth-switch-link button:hover {
   text-decoration: underline;
 }
+
+/* FOOTER */
+
+.app-footer {
+  width: 100%;
+  background: #1b1f24;
+  color: #e9ecef;
+  padding: 30px 40px 15px;
+  margin-top: 40px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.footer-left,
+.footer-right {
+  max-width: 400px;
+}
+
+.footer-left h4,
+.footer-right h4 {
+  color: #00b4d8;
+  margin-bottom: 10px;
+}
+
+.footer-left p,
+.footer-right p {
+  font-size: 14px;
+  color: #adb5bd;
+}
+
+.footer-right a {
+  color: #9ef01a;
+  text-decoration: none;
+}
+
+.footer-right a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container .app-footer {
+  margin-top: 0;
+}
+
+.footer-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  flex-wrap: wrap;
+  text-align: left;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+  min-width: 260px;
+}
